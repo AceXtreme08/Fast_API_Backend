@@ -13,6 +13,8 @@ def valid_password(password: str):
 def get_password_input(password: str):
     if len(password) < 8 or not valid_password(password):
         raise ValueError("error pass")
+    print("password saved")
 
 
 
+get_password_input("asdf1234")

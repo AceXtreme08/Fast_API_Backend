@@ -37,7 +37,3 @@ email = Annotated[EmailStr, "email"]
 async def create_user(username: username, password: password, email: email):
     return Userresponse(user_name=username, user_email=email)
 
-
-@app.get("/get_screens")
-def test():
-    return Userresponse(user_name="abc", user_email="abc@def.com")
