@@ -1,13 +1,13 @@
 from sqlalchemy.orm import Session
-from .import models, schemas
+import models, schemas
 
 def get_user(db : Session, user_id : int):
-    return db. querry(models.user).filter(models.User.id == user_id).first()
+    return db. query(models.user).filter(models.User.id == user_id).first()
 
 
 
 def get_user_by_email(db : Session, email:str):
-    return db.qury(models.User).filter(models.user.email == email).first()
+    return db.query(models.User).filter(models.user.email == email).first()
 
 
 def get_users(db: Session, skip : int = 0 , limit : int = 100):

@@ -1,24 +1,26 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+import crud, models, schemas, database
 
-from .import crud, models, schemas
-from .database import SessionLocal, engine
+#create db (metadata)
 
-models.Base.metadata.create_all(bind=engine)
+Base = database.get_base()
 
+Base.metadata.create_all(bind=database.engine)
 
 app=FastAPI()
 
 def get_db():
-    db = SessionLocal()
+    ''' Database generator'''
+    db = database.SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
+         
 
 @app.post("/users/", response_model = schemas.User, status_code=201)
-def create_user(user: schemas, UserCreate, db: Session = Depends(get_db)):
+def create_user(user: schemas.User, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="email taken")
