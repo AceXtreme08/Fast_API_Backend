@@ -1,0 +1,6 @@
+notif for: 123@bvc.com:some notifmessage to yes@no.com
+message to yes@no.com
+found query: hey bro
+message to nooo@ball.com
+found query: asdfhgsrth
+message to bidiptoZZsazgla
