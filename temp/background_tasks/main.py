@@ -33,7 +33,7 @@ def get_query(background_tasks : BackgroundTasks, q :str | None = None):
                       
 
 
-@app.post("/send-notif/{email}", status_code=202, detail="accepted")
+@app.post("/send-notif/{email}", status_code=202)
 async def send_notif(email:str, background_tasks : BackgroundTasks, q:str = Depends(get_query)):
     message = f"message to {email}\n"
     background_tasks.add_task(write_log, message)
