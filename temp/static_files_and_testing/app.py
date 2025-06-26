@@ -5,7 +5,7 @@ from .test_main import app
 client = TestClient(app)
 
 
-def test_read_item():
+def test_read_iem():
     response = client.get("/items/foo", headers={"X-Token": "coneofsilence"})
     assert response.status_code == 200
     assert response.json() == {
